@@ -1,4 +1,5 @@
-<p-dataView [value]="beers" [paginator]="true" [rows]="10">
+<p-dataView #dv [value]="beers" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="name"
+[sortField]="sortField" [sortOrder]="sortOrder">
   <p-header>
     <div class="ui-helper-clearfix">
       <div class="ui-g">
@@ -8,7 +9,7 @@
         </div>
         <div class="ui-g-6 ui-md-4 filter-container">
           <div style="position:relative">
-            <input type="search" pInputText placeholder="Search by brand" (keyup)="dv.filter($event.target.value)">
+            <input type="search" pInputText placeholder="Search by name" (keyup)="dv.filter($event.target.value)">
           </div>
         </div>
         <div class="ui-g-6 ui-md-4" style="text-align:right">
@@ -67,3 +68,26 @@
     <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
   </p-footer>
 </p-dataView>
+
+<p-dialog header="Beer Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="525" (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="selectedBeer">
+      <div class="ui-g-12" style="text-align:center">
+        <img *ngIf="selectedBeer.labels" src="{{selectedBeer.labels?.icon}}" />
+        <p *ngIf="!selectedBeer.labels" class="key-info">No label image available.</p>
+      </div>
+      <div class="ui-g-4">Id: </div>
+      <div class="ui-g-8">{{selectedBeer.id}}</div>
+
+      <div class="ui-g-4">Brand: </div>
+      <div class="ui-g-8">{{selectedBeer.name}}</div>
+
+      <div class="ui-g-4">Year: </div>
+      <div class="ui-g-8">{{selectedBeer.description}}</div>
+
+      <div class="ui-g-4">Food Pairings: </div>
+      <div class="ui-g-8">{{selectedBeer.foodPairings}}</div>
+
+      <div class="ui-g-4">ABV: </div>
+      <div class="ui-g-8">{{selectedBeer.abv}}</div>
+  </div>
+</p-dialog>

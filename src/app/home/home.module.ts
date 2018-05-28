@@ -5,6 +5,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { DataViewModule } from 'primeng/dataview';
 import { PanelModule } from 'primeng/panel';
 import { FormsModule } from '@angular/forms';
+import {DialogModule} from 'primeng/dialog';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     DataViewModule,
     DataViewModule,
     PanelModule,
+    DialogModule,
     DropdownModule,
     FormsModule
   ],
