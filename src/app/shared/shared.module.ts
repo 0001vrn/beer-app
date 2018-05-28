@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { CustomHttpService, UrlProviderService } from '../core';
+import { BeerService } from './services/beer.service';
 
 @NgModule({
   imports: [
-    CommonModule
   ],
+  providers: [CustomHttpService, UrlProviderService, BeerService],
   declarations: [SearchBoxComponent],
   exports: [SearchBoxComponent]
 })
