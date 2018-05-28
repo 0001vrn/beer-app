@@ -12,7 +12,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^5.2.0",
+    "@angular/animations": "^5.2.11",
+    "@angular/cdk": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
     "@angular/core": "^5.2.0",
@@ -21,9 +22,13 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "ng4-spinner": "^0.1.0",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "primeng": "^5.2.0",
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.4",
