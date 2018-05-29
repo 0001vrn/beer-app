@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { Beer } from '../model/beer-pagination-list.model';
 import "rxjs/Rx";
 import { Subject } from 'rxjs/Subject';
@@ -18,7 +17,7 @@ export class BeerService {
   searchResults: any;
   beer: Beer;
   result: any;
-  
+
   constructor(private http: CustomHttpService, private urlProviderService: UrlProviderService) { }
 
   getBeers() {
@@ -27,8 +26,7 @@ export class BeerService {
 
       return this.result = this.http.get(this.urlProviderService.buildUrl(this.urlProviderService.getBeersUrl()))
         .publishReplay(1)
-        .refCount()
-        .catch(this.handleError);
+        .refCount();
     }
 
 
@@ -70,19 +68,5 @@ export class BeerService {
       .then((res) => {
         return res.json();
       });
-  }
-
-  handleError(error: Response | any) {
-
-    let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.errorMessage || JSON.stringify(body);
-      errMsg = ` ${error.statusText || ''} ${err}`;
-    }
-    else {
-      errMsg = error.message ? error.message : error.toString();
-    }
-    return Observable.throw(errMsg);
   }
 }

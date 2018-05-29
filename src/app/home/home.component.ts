@@ -27,13 +27,12 @@ export class HomeComponent implements OnInit {
     this.searchEnabled = this._beerService.searchEnabled;
 
     if(!this.searchEnabled)
-    this.getBeers();
+      this.getBeers();
     this.listenForBeerStream();
 
     this.sortOptions = [
-      { label: 'Newest First', value: '!year' },
-      { label: 'Oldest First', value: 'year' },
-      { label: 'Name', value: 'name' },
+      { label: 'Newest First', value: '!createDate' },
+      { label: 'Oldest First', value: 'createDate' },
       { label: 'High ABV', value: '!abv' },
       { label: 'Low ABV', value: 'abv' }
     ];

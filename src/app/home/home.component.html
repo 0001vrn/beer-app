@@ -1,5 +1,5 @@
-<p-dataView #dv [value]="beers" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="name"
-[sortField]="sortField" [sortOrder]="sortOrder">
+<p-dataView #dv [value]="beers" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="name" [sortField]="sortField"
+  [sortOrder]="sortOrder">
   <p-header>
     <div class="ui-helper-clearfix">
       <div class="ui-g">
@@ -28,39 +28,43 @@
         <div class="ui-g">
           <div class="ui-g-2 ui-sm-6">Id: </div>
           <div class="ui-g-10 ui-sm-6">
-            <b>{{beer.id}}</b>
+            <b>{{ beer.id }}</b>
           </div>
 
           <div class="ui-g-2 ui-sm-6">Name: </div>
           <div class="ui-g-10 ui-sm-6">
-            <b>{{beer.name}}</b>
+            <b>{{ beer.name }}</b>
           </div>
 
           <div class="ui-g-2 ui-sm-6">Description: </div>
           <div class="ui-g-10 ui-sm-6">
-            <b>{{beer.description}}</b>
+            <b>{{ beer.description ? beer.description : 'Not available'}}</b>
           </div>
 
           <div class="ui-g-2 ui-sm-6">ABV: </div>
           <div class="ui-g-10 ui-sm-6">
-            <b>{{beer.abv?beer.abv+'%':'Not available'}}</b>
+            <b>{{ beer.abv ? beer.abv+'%' : 'Not available' }}</b>
           </div>
         </div>
       </div>
       <div class="ui-g-12 ui-md-1 search-icon">
-        <button pButton type="button" icon="fa-search" (click)="selectBeer($event, beer)"><i class="fa fa-search" aria-hidden="true"> </i></button>
+        <button pButton type="button" icon="fa-search" (click)="selectBeer($event, beer)">
+          <i class="fa fa-search" aria-hidden="true"> </i>
+        </button>
       </div>
     </div>
   </ng-template>
 
-   <ng-template let-beer pTemplate="gridItem">
+  <ng-template let-beer pTemplate="gridItem">
     <div style="padding:.5em" class="ui-g-12 ui-md-3">
       <p-panel [header]="beer.id" [style]="{'text-align':'center'}">
         <img *ngIf="beer.labels" src="{{beer.labels?.icon}}" />
         <p *ngIf="!beer.labels" class="key-info">No label image available.</p>
         <div class="beer-detail">{{beer.name}} - {{beer.abv?beer.abv+'%':'Not available'}}</div>
         <hr class="ui-widget-content" style="border-top:0">
-        <button pButton type="button" icon="fa-search" (click)="selectBeer($event, beer)" style="margin-top:0"><i class="fa fa-search" aria-hidden="true"> </i></button>
+        <button pButton type="button" icon="fa-search" (click)="selectBeer($event, beer)" style="margin-top:0">
+          <i class="fa fa-search" aria-hidden="true"> </i>
+        </button>
       </p-panel>
     </div>
   </ng-template>
@@ -69,25 +73,26 @@
   </p-footer>
 </p-dataView>
 
-<p-dialog header="Beer Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="525" (onAfterHide)="onDialogHide()">
+<p-dialog header="Beer Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="525"
+  (onAfterHide)="onDialogHide()">
   <div class="ui-g" *ngIf="selectedBeer">
-      <div class="ui-g-12" style="text-align:center">
-        <img *ngIf="selectedBeer.labels" src="{{selectedBeer.labels?.icon}}" />
-        <p *ngIf="!selectedBeer.labels" class="key-info">No label image available.</p>
-      </div>
-      <div class="ui-g-4">Id: </div>
-      <div class="ui-g-8">{{selectedBeer.id}}</div>
+    <div class="ui-g-12" style="text-align:center">
+      <img *ngIf="selectedBeer.labels" src="{{selectedBeer.labels?.icon}}" />
+      <p *ngIf="!selectedBeer.labels" class="key-info">No label image available.</p>
+    </div>
+    <div class="ui-g-4">Id: </div>
+    <div class="ui-g-8">{{selectedBeer.id}}</div>
 
-      <div class="ui-g-4">Brand: </div>
-      <div class="ui-g-8">{{selectedBeer.name}}</div>
+    <div class="ui-g-4">Brand: </div>
+    <div class="ui-g-8">{{selectedBeer.name}}</div>
 
-      <div class="ui-g-4">Description: </div>
-      <div class="ui-g-8">{{selectedBeer.description}}</div>
+    <div class="ui-g-4">Description: </div>
+    <div class="ui-g-8">{{ selectedBeer.description? selectedBeer.description : 'Not available'}}</div>
 
-      <div class="ui-g-4">Food Pairings: </div>
-      <div class="ui-g-8">{{selectedBeer.foodPairings? selectedBeer.foodPairings : 'Not available'}}</div>
+    <div class="ui-g-4">Food Pairings: </div>
+    <div class="ui-g-8">{{selectedBeer.foodPairings? selectedBeer.foodPairings : 'Not available'}}</div>
 
-      <div class="ui-g-4">ABV: </div>
-      <div class="ui-g-8">{{ selectedBeer.abv ? selectedBeer.abv+'%':'Not available'}}</div>
+    <div class="ui-g-4">ABV: </div>
+    <div class="ui-g-8">{{ selectedBeer.abv ? selectedBeer.abv+'%':'Not available'}}</div>
   </div>
 </p-dialog>
