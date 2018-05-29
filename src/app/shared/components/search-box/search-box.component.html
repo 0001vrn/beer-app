@@ -1,3 +1,11 @@
-<p>
-  search-box works!
-</p>
+<div class="row">
+    <form action="" #formData='ngForm'>
+        <select class="classic" #selectedCategory (change)="currentCat(selectedCategory.value)">
+            <option value="All">All</option>
+             <ng-template ngFor let-item [ngForOf]="categories" let-i="index" [ngForTrackBy]="trackByFn">
+              <option value="{{item.name}}">{{item.name}}</option>
+             </ng-template>
+       </select>
+      <input [formControl]="term" type="text" placeholder="Search Beer">
+    </form>
+</div>

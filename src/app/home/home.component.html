@@ -9,7 +9,7 @@
         </div>
         <div class="ui-g-6 ui-md-4 filter-container">
           <div style="position:relative">
-            <input type="search" pInputText placeholder="Search by name" (keyup)="dv.filter($event.target.value)">
+            <input type="search" pInputText placeholder="Filter by name" (keyup)="dv.filter($event.target.value)">
           </div>
         </div>
         <div class="ui-g-6 ui-md-4" style="text-align:right">
@@ -43,12 +43,12 @@
 
           <div class="ui-g-2 ui-sm-6">ABV: </div>
           <div class="ui-g-10 ui-sm-6">
-            <b>{{beer.abv}}</b>
+            <b>{{beer.abv?beer.abv+'%':'Not available'}}</b>
           </div>
         </div>
       </div>
       <div class="ui-g-12 ui-md-1 search-icon">
-        <button pButton type="button" icon="fa-search" (click)="selectBeer($event, beer)"></button>
+        <button pButton type="button" icon="fa-search" (click)="selectBeer($event, beer)"><i class="fa fa-search" aria-hidden="true"> </i></button>
       </div>
     </div>
   </ng-template>
@@ -58,9 +58,9 @@
       <p-panel [header]="beer.id" [style]="{'text-align':'center'}">
         <img *ngIf="beer.labels" src="{{beer.labels?.icon}}" />
         <p *ngIf="!beer.labels" class="key-info">No label image available.</p>
-        <div class="beer-detail">{{beer.name}} - {{beer.abv}}</div>
+        <div class="beer-detail">{{beer.name}} - {{beer.abv?beer.abv+'%':'Not available'}}</div>
         <hr class="ui-widget-content" style="border-top:0">
-        <button pButton type="button" icon="fa-search" (click)="selectBeer($event, beer)" style="margin-top:0"></button>
+        <button pButton type="button" icon="fa-search" (click)="selectBeer($event, beer)" style="margin-top:0"><i class="fa fa-search" aria-hidden="true"> </i></button>
       </p-panel>
     </div>
   </ng-template>
@@ -88,6 +88,6 @@
       <div class="ui-g-8">{{selectedBeer.foodPairings}}</div>
 
       <div class="ui-g-4">ABV: </div>
-      <div class="ui-g-8">{{selectedBeer.abv}}</div>
+      <div class="ui-g-8">{{ selectedBeer.abv ? selectedBeer.abv+'%':'Not available'}}</div>
   </div>
 </p-dialog>
