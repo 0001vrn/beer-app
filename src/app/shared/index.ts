@@ -1,5 +1,5 @@
 //model
-export * from './model/welcome.model';
+export * from './model/beer-pagination-list.model';
 
 //components
 export * from './components/search-box/search-box.component';

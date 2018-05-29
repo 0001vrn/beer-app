@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BeerService } from '../../services/beer.service';
-import { Beer, Welcome } from '../../model/welcome.model';
+import { Beer } from '../../model/beer-pagination-list.model';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { CustomHttpService, UrlProviderService } from '../../core';
-import { Beer, Welcome } from '../model/welcome.model';
+import { Beer } from '../model/beer-pagination-list.model';
 import "rxjs/Rx";
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { CustomHttpService } from '../../core/http/custom-http.service';
+import { UrlProviderService } from '../../core/helper/url-provider.service';
 
 @Injectable()
 export class BeerService {
@@ -24,7 +25,7 @@ export class BeerService {
 
     if (!this.result) {
 
-      return this.result = this.http.get(this.urlProviderService.buildUrl('beers?glasswareId=1&withBreweries=Y'))
+      return this.result = this.http.get(this.urlProviderService.buildUrl(this.urlProviderService.getBeersUrl()))
         .publishReplay(1)
         .refCount()
         .catch(this.handleError);
@@ -45,7 +46,7 @@ export class BeerService {
 
   searchBeer(term, category) {
     if (term && term.length > 0) {
-      return this.http.get(this.urlProviderService.buildUrl('search?q=' + term)).toPromise()
+      return this.http.get(this.urlProviderService.buildUrl(this.urlProviderService.getSearchUrl() + term)).toPromise()
         .then(res => {
           this.searchResults = res.json().data;
           if (category !== "All" && category !== undefined) {
@@ -65,7 +66,7 @@ export class BeerService {
   }
 
   getCategories() {
-    return this.http.get(this.urlProviderService.buildUrl("categories?key=&")).toPromise()
+    return this.http.get(this.urlProviderService.buildUrl(this.urlProviderService.getCategoriesUrl())).toPromise()
       .then((res) => {
         return res.json();
       });

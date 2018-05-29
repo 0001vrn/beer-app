@@ -36,7 +36,37 @@ describe('UrlProviderService', () => {
 
     it('should return BASE_URL', () => {
       let res = service.getBaseUrl();
-      expect(res).toContain('http://api.brewerydb.com/v2/')
+      expect(res).toContain('http://api.brewerydb.com/v2/');
+    });
+  });
+  describe('getCategoriesUrl()', () => {
+    it('to be defined', () => {
+      expect(service.getCategoriesUrl).toBeDefined();
+    });
+
+    it('should return CATEGORIES_URL', () => {
+      let res = service.getCategoriesUrl();
+      expect(res).toContain('categories?key=&');
+    });
+  });
+  describe('getBeersUrl()', () => {
+    it('to be defined', () => {
+      expect(service.getBeersUrl).toBeDefined();
+    });
+
+    it('should return BEERS_URL', () => {
+      let res = service.getBeersUrl();
+      expect(res).toContain('beers?glasswareId=1&withBreweries=Y');
+    });
+  });
+  describe('getSearchUrl()', () => {
+    it('to be defined', () => {
+      expect(service.getSearchUrl).toBeDefined();
+    });
+
+    it('should return SEARCH_URL', () => {
+      let res = service.getSearchUrl();
+      expect(res).toContain('search?q=');
     });
   });
 });

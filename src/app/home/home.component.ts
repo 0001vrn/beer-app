@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Beer, BeerService, Welcome } from '../shared';
+import { Beer, BeerService } from '../shared';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { SelectItem } from 'primeng/components/common/selectitem';
 

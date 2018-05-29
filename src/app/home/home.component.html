@@ -81,11 +81,11 @@
       <div class="ui-g-4">Brand: </div>
       <div class="ui-g-8">{{selectedBeer.name}}</div>
 
-      <div class="ui-g-4">Year: </div>
+      <div class="ui-g-4">Description: </div>
       <div class="ui-g-8">{{selectedBeer.description}}</div>
 
       <div class="ui-g-4">Food Pairings: </div>
-      <div class="ui-g-8">{{selectedBeer.foodPairings}}</div>
+      <div class="ui-g-8">{{selectedBeer.foodPairings? selectedBeer.foodPairings : 'Not available'}}</div>
 
       <div class="ui-g-4">ABV: </div>
       <div class="ui-g-8">{{ selectedBeer.abv ? selectedBeer.abv+'%':'Not available'}}</div>

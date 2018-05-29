@@ -5,13 +5,12 @@ import { DropdownModule } from 'primeng/dropdown';
 import { DataViewModule } from 'primeng/dataview';
 import { PanelModule } from 'primeng/panel';
 import { FormsModule } from '@angular/forms';
-import {DialogModule} from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    DataViewModule,
     DataViewModule,
     PanelModule,
     DialogModule,
@@ -19,6 +18,11 @@ import {DialogModule} from 'primeng/dialog';
     FormsModule
   ],
   declarations: [HomeComponent],
-  exports: [HomeComponent]
+  exports: [
+    HomeComponent, 
+    DataViewModule,
+    PanelModule,
+    DialogModule,
+    DropdownModule,]
 })
 export class HomeModule { }
