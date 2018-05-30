@@ -5,6 +5,7 @@ const API_KEY = '&key=d905bda1503354da3820dc22ba49ad69';
 const BEERS_URL = 'beers?glasswareId=1&withBreweries=Y';
 const SEARCH_URL = 'search?q=';
 const CATEGORIES_URL = 'categories?key=&';
+
 @Injectable()
 export class UrlProviderService {
 
