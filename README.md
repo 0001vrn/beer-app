@@ -20,7 +20,8 @@ Beer app uses a number of open source projects to work properly:
 
 ### Installation
 
-Beer app requires 
+Beer app requires:
+
 * [Node.js](https://nodejs.org/) v10.0.0
 * [Angular CLI](https://cli.angular.io/) v1.7.4 
 * [npm](https://www.npmjs.com/) v6.0.1
