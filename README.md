@@ -1,27 +1,44 @@
-# BeerApp
+# Beer App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+Beer app is a web app that designed to consume brewerydb APIs to list beers from around the world. 
 
-## Development server
+  - Search, Sort and Filter beers
+  - Search by category
+  - Supports both list view and grid view
+  - Pagination of beers
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Tech
 
-## Code scaffolding
+Beer app uses a number of open source projects to work properly:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* [Angular](https://angular.io/guide/quickstart) - HTML enhanced for web apps!
+* [Twitter Bootstrap](http://twitter.github.com/bootstrap/) - great UI boilerplate for modern web apps
+* [Primeng](https://www.primefaces.org/primeng/#/) - A collection of rich UI components for Angular
+* [Ng4-loading-spinner](https://www.npmjs.com/package/ng4-loading-spinner) - custom async loading spinner
+* [CORS Anywhere](https://rocky-bayou-96357.herokuapp.com/) - This API enables cross-origin requests to anywhere.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+### Installation
 
-## Running unit tests
+Beer app requires 
+* [Node.js](https://nodejs.org/) v10.0.0
+* [Angular CLI](https://cli.angular.io/) v1.7.4 
+* [npm](https://www.npmjs.com/) v6.0.1
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Install the dependencies and devDependencies and start the server.
 
-## Running end-to-end tests
+```sh
+$ cd beer-app
+$ npm install
+$ npm start
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+For code coverage report
 
-## Further help
+```sh
+$ ng test --single-run --code-coverage
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Developed By
+
+Varun Thakur
