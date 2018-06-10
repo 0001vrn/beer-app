@@ -12,6 +12,7 @@ describe('UrlProviderService', () => {
     service = TestBed.get(UrlProviderService);
   });
 
+  // tslint:disable-next-line:no-shadowed-variable
   it('should be created', inject([UrlProviderService], (service: UrlProviderService) => {
     expect(service).toBeTruthy();
   }));
@@ -22,7 +23,7 @@ describe('UrlProviderService', () => {
     });
 
     it('should return search resource', () => {
-      let res = service.buildUrl('search?q=');
+      const res = service.buildUrl('search?q=');
 
       expect(res).toContain('http://api.brewerydb.com/v2/');
       expect(res).toContain('key');
@@ -35,7 +36,7 @@ describe('UrlProviderService', () => {
     });
 
     it('should return BASE_URL', () => {
-      let res = service.getBaseUrl();
+      const res = service.getBaseUrl();
       expect(res).toContain('http://api.brewerydb.com/v2/');
     });
   });
@@ -45,7 +46,7 @@ describe('UrlProviderService', () => {
     });
 
     it('should return CATEGORIES_URL', () => {
-      let res = service.getCategoriesUrl();
+      const res = service.getCategoriesUrl();
       expect(res).toContain('categories?key=&');
     });
   });
@@ -55,7 +56,7 @@ describe('UrlProviderService', () => {
     });
 
     it('should return BEERS_URL', () => {
-      let res = service.getBeersUrl();
+      const res = service.getBeersUrl();
       expect(res).toContain('beers?glasswareId=1&withBreweries=Y');
     });
   });
@@ -65,7 +66,7 @@ describe('UrlProviderService', () => {
     });
 
     it('should return SEARCH_URL', () => {
-      let res = service.getSearchUrl();
+      const res = service.getSearchUrl();
       expect(res).toContain('search?q=');
     });
   });

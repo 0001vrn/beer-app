@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Beer } from '../model/beer-pagination-list.model';
-import "rxjs/Rx";
+// tslint:disable-next-line:import-blacklist
+import 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -34,10 +35,8 @@ export class BeerService {
       this.beerAnnouncedSource.next(this.result);
 
       return Observable.of(this.result);
-    }
-
-    else {
-      return this.result
+    } else {
+      return this.result;
     }
 
   }
@@ -47,12 +46,10 @@ export class BeerService {
       return this.http.get(this.urlProviderService.buildUrl(this.urlProviderService.getSearchUrl() + term)).toPromise()
         .then(res => {
           this.searchResults = res.json().data;
-          if (category !== "All" && category !== undefined) {
-            const filteredByCat = this.searchResults.filter(beer => (beer.style != undefined && beer.style.category.name === category))
+          if (category !== 'All' && category !== undefined) {
+            const filteredByCat = this.searchResults.filter(beer => (beer.style !== undefined && beer.style.category.name === category));
             this.beerAnnouncedSource.next(filteredByCat);
-          }
-
-          else {
+          } else {
             this.beerAnnouncedSource.next(this.searchResults);
             this.result = this.searchResults;
           }

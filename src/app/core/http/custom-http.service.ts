@@ -13,24 +13,25 @@ export class CustomHttpService extends Http {
   }
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-    let errorResponse = new ErrorResponse();
-    if(typeof url === 'string'){
-      if(!options){
+    const errorResponse = new ErrorResponse();
+    if (typeof url === 'string') {
+      if (!options) {
         options = { headers: new Headers() };
       }
-    } else{
+    } else {
       errorResponse.Method = url.method;
     }
-    if(!navigator.onLine){
-      if(errorResponse.Method == RequestMethod.Put || errorResponse.Method == RequestMethod.Post || errorResponse.Method == RequestMethod.Delete){
+    if (!navigator.onLine) {
+      if (errorResponse.Method === RequestMethod.Put
+         || errorResponse.Method === RequestMethod.Post
+         || errorResponse.Method === RequestMethod.Delete) {
         console.log('Data not Saved or Network Problem');
       }
-    }
-    else{
-      let thisDuplicate = this;
+    } else {
+      const thisDuplicate = this;
       return super.request(url, options).catch((res: Response) => {
-        if(res != undefined){
-          errorResponse.Message = res.json()["message"] ? res.json()["message"] : (res.json() ? res.json().message : res.json());
+        if (res !== undefined) {
+          errorResponse.Message = res.json()['message'] ? res.json()['message'] : (res.json() ? res.json().message : res.json());
           errorResponse.Url = res.url;
           errorResponse.Status = res.status;
           errorResponse.StatusText = res.statusText;
@@ -41,18 +42,20 @@ export class CustomHttpService extends Http {
         return Observable.throw(res);
       });
     }
-    
+
 
   }
 
   private errorCallback(errorResponse: ErrorResponse) {
     let title: string;
     let message: string;
-    let isUndefinedOrEmpty = function isUndefinedOrEmpty(value: any): boolean {
-        if (typeof value === 'string' && (value == undefined || value == ''))
+    // tslint:disable-next-line:no-shadowed-variable
+    const isUndefinedOrEmpty = function isUndefinedOrEmpty(value: any): boolean {
+        if (typeof value === 'string' && (value === undefined || value === '')) {
             return true;
-        else if (value == undefined)
+        } else if (value === undefined) {
             return true;
+               }
         return false;
 
     };
@@ -60,6 +63,7 @@ export class CustomHttpService extends Http {
         switch (errorResponse.Status) {
             case HttpStatusCodes.Unauthorized: {
                 title = 'Error';
+                // tslint:disable-next-line:max-line-length
                 message = isUndefinedOrEmpty(errorResponse.Message) ? 'You do not have the appropriate permission(s).' : errorResponse.Message;
                 break;
             }
@@ -96,8 +100,9 @@ export class CustomHttpService extends Http {
                     break;
                 }
         }
-        if (!isUndefinedOrEmpty(title) && !isUndefinedOrEmpty(message))
+        if (!isUndefinedOrEmpty(title) && !isUndefinedOrEmpty(message)) {
             console.log(`title: ${title} , message: ${message}`);
+        }
     }
 }
 

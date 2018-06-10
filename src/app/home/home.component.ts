@@ -26,8 +26,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.searchEnabled = this._beerService.searchEnabled;
 
-    if(!this.searchEnabled)
+    if (!this.searchEnabled) {
       this.getBeers();
+    }
     this.listenForBeerStream();
 
     this.sortOptions = [
@@ -38,45 +39,40 @@ export class HomeComponent implements OnInit {
     ];
   }
 
-  listenForBeerStream(){
+  listenForBeerStream() {
     this._beerService.beerAnnounced$.subscribe(
       beers => {
-        let beerStream = new Array();
-
-        for (let key in beers) {
+        const beerStream = new Array();
+        for (const key in beers) {
           if (beers.hasOwnProperty(key)) {
             beerStream.push(beers[key]);
           }
         }
-        
-        this.beers = beerStream.slice()
-      
+        this.beers = beerStream.slice();
       }
-    )
+    );
   }
 
   getBeers() {
-    this._loaderService.show()
-    var obsBeers = this._beerService.getBeers();
-    var hot = obsBeers.publish();
-    obsBeers.subscribe((res) =>{
+    this._loaderService.show();
+    const obsBeers = this._beerService.getBeers();
+    const hot = obsBeers.publish();
+    obsBeers.subscribe((res) => {
       this.beers = res.json().data;
       this._loaderService.hide();
-    
-      error => { this.errorMsg = error }
+      // tslint:disable-next-line:no-unused-expression
+      error => { this.errorMsg = error; };
     }
-    )
+    );
     hot.connect();
   }
 
   onSortChange(event) {
-    let value = event.value;
-
+    const value = event.value;
     if (value.indexOf('!') === 0) {
       this.sortOrder = -1;
       this.sortField = value.substring(1, value.length);
-    }
-    else {
+    } else {
       this.sortOrder = 1;
       this.sortField = value;
     }

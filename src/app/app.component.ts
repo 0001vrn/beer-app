@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  CompanyName: string = 'The Beer Company'
-  CompanySpeciality: string = 'We specialize in beers!';
+  CompanyName = 'The Beer Company';
+  CompanySpeciality = 'We specialize in beers!';
 
-  template: string =`<img width=100% src="/assets/img/loading-macro-animation-for-brewery-website.gif" />`
+  template = '<img width=100% src="/assets/img/loading-macro-animation-for-brewery-website.gif" />';
 
 }

@@ -7,7 +7,6 @@ import { PanelModule } from 'primeng/panel';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -19,10 +18,10 @@ import { DialogModule } from 'primeng/dialog';
   ],
   declarations: [HomeComponent],
   exports: [
-    HomeComponent, 
+    HomeComponent,
     DataViewModule,
     PanelModule,
     DialogModule,
-    DropdownModule,]
+    DropdownModule, ]
 })
 export class HomeModule { }

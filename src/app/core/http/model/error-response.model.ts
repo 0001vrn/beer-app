@@ -1,4 +1,4 @@
-import { RequestMethod } from "@angular/http";
+import { RequestMethod } from '@angular/http';
 export class ErrorResponse {
     Method: RequestMethod;
     Message: string;

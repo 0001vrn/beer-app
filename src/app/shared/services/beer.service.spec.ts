@@ -9,7 +9,7 @@ describe('BeerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [BeerService, CustomHttpService, UrlProviderService],
-      imports:[HttpModule]
+      imports: [HttpModule]
     });
   });
 

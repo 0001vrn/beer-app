@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BeerService } from '../../services/beer.service';
 import { Beer } from '../../model/beer-pagination-list.model';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
@@ -20,13 +19,14 @@ export class SearchBoxComponent implements OnInit {
   constructor(private _beerService: BeerService) { }
 
   ngOnInit() {
-    this.initializeDropdowns()
+    this.initializeDropdowns();
     this.listenForInput();
   }
 
   initializeDropdowns() {
     this._beerService.getBeers().subscribe((res) => {
         this.beers = res.data;
+        // tslint:disable-next-line:no-shadowed-variable
         this._beerService.getCategories().then(res => {
           this.categories = res.data;
         });
@@ -38,12 +38,14 @@ export class SearchBoxComponent implements OnInit {
       .debounceTime(400)
       .distinctUntilChanged()
       .subscribe(term => this.searchTerm(term, this.currentCategory)),
-      function (error) { console.log("Error happened" + error) },
-      function () { console.log("the subscription is completed") }
+      // tslint:disable-next-line:no-unused-expression
+      function (error) { console.log('Error happened' + error); },
+      // tslint:disable-next-line:no-unused-expression
+      function () { console.log('the subscription is completed'); };
   }
   currentCat(cat) {
     this.currentCategory = cat;
-    this.searchTerm(this.term.value, cat)
+    this.searchTerm(this.term.value, cat);
 
   }
   searchTerm(search, category) {

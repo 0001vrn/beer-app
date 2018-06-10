@@ -4,10 +4,10 @@ import { UrlProviderService } from './helper/url-provider.service';
 
 @NgModule({
   imports: [
-    
+
   ],
   declarations: [],
   providers: [CustomHttpService, UrlProviderService],
-  exports:[]
+  exports: []
 })
 export class CoreModule { }

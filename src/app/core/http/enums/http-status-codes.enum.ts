@@ -9,5 +9,5 @@
     InternalServerError = 500,
     BadGateway = 502,
     ServiceUnavailable = 503,
-    GatewayTimeout = 504  
+    GatewayTimeout = 504
 }

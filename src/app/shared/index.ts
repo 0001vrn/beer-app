@@ -1,11 +1,11 @@
-//model
+// model
 export * from './model/beer-pagination-list.model';
 
-//components
+// components
 export * from './components/search-box/search-box.component';
 
-//services
+// services
 export * from './services/beer.service';
 
-//module
+// module
 export * from './shared.module';
