@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Beer } from '../model/beer-pagination-list.model';
-// tslint:disable-next-line:import-blacklist
-import 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+// tslint:disable-next-line:import-blacklist
+import 'rxjs/Rx';
+
 import { CustomHttpService } from '../../core/http/custom-http.service';
 import { UrlProviderService } from '../../core/helper/url-provider.service';
+import { Beer } from '../model/beer-pagination-list.model';
 
 @Injectable()
 export class BeerService {
