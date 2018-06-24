@@ -7,7 +7,8 @@ Beer app is a web app that designed to consume brewerydb APIs to list beers from
   - Supports both list view and grid view
   - Pagination of beers
 
-![Demo](https://github.com/0001vrn/beer-app/blob/master/src/assets/img/demo.png?raw=true)
+[Live Demo](https://stackblitz.com/github/0001vrn/beer-app)
+![Sample Screen](https://github.com/0001vrn/beer-app/blob/master/src/assets/img/demo.png?raw=true)
 
 ### Tech
 
